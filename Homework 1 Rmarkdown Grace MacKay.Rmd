@@ -1,0 +1,210 @@
+---
+title: "Homework 1: RMarkdown"
+author: "Grace MacKay"
+date: Created on "1/24/2020" Submitted on `r format(Sys.time(), "%d %B, %Y")`
+output: 
+  html_document:
+    theme: journal
+    toc: TRUE
+    toc_float: TRUE
+  
+---
+
+```{r loading files, echo=FALSE}
+## install.packages('gapminder')
+## install.packages('DT')
+## install.packages('tibble')
+
+library("gapminder")
+library("DT")
+library("tibble")
+```
+
+
+# Calling the "iris" dataset to view
+```{r viewing dataset, echo=FALSE}
+iris
+```
+
+# Exploring the basics of the "iris" dataset
+
+This dataset is pre-esxisting in R. A list of all of the preloaded datasets in R can be found by running the command data() in the R console.
+
+## Layout of the data
+
+### How is it formatted?
+The "iris" data is formatted as a _dataframe_ with **150 observations** and **5 variables** of interest
+```{r looking at the structure, echo=FALSE}
+str(iris)
+```
+
+### What are the names of the variables measured?
+
+The variables of interest are **Sepal Length**, **Sepal Width**, **Petal Length**, **Petal Width** and **Species**. The first four columns have _numeric_ data, providing measurements in cm. The species column contains data characterized as _strings_, which give the names of the species of irises. 
+``` {r Column names , echo=FALSE}
+names(iris)
+```
+
+There are only three species included in the dataset: _setosa_, _versicolor_ and _virginica_.
+``` {r flower names, echo=FALSE}
+unique(iris$Species)
+```
+
+
+# Summary of the data
+
+```{r summary of whole dataframe, echo=FALSE}
+summary(iris)
+```
+
+
+## What is the average iris like?
+Average sepal length is **5.843cm**.
+```{r sepal length mean, echo=FALSE}
+mean(iris$Sepal.Length)
+```
+
+Average sepal width is **3.057cm**.
+```{r sepal width mean, echo=FALSE}
+mean(iris$Sepal.Width)
+```
+
+Average petal length is **3.758cm**.
+```{r petal length mean, echo=FALSE}
+mean(iris$Petal.Length)
+```
+
+Average petal width is **1.199cm**.
+```{r petal width mean, echo=FALSE}
+mean(iris$Petal.Width)
+```
+
+## What are the ranges for each variable?
+
+The range for sepal length is **4.3cm to 7.9cm**.
+```{r range for sepal length , echo=FALSE}
+range(iris$Sepal.Length)
+```
+
+The range for sepal width is **2.0cm to 4.4cm**.
+```{r range for sepal width , echo=FALSE}
+range(iris$Sepal.Width)
+```
+
+The range for petal length is **1.0cm to 6.9cm**.
+```{r range for petal length , echo=FALSE}
+range(iris$Petal.Length)
+```
+
+The range for petal width is **1.0cm to 2.5cm**.
+```{r range for petal width , echo=FALSE}
+range(iris$Petal.Width)
+```
+
+
+
+## How many of each type of iris was studied?
+There were **50** setosa irises, **50** versicolor irises and **50** virginica irises examined.
+```{r how many of each iris, echo=FALSE}
+summary(iris$Species)
+```
+
+## Summaries for each species
+
+### What is the setosa species like?
+Summary of the _setosa_ species:
+``` {r setosa summary, echo=FALSE}
+setosa_only <- subset.data.frame(iris, subset = (iris$Species == "setosa"))
+summary(setosa_only)
+```
+The average setosa sepal length is **5.006cm**.
+``` {r setosa sepal length, echo=FALSE}
+mean(setosa_only$Sepal.Length)
+```
+
+The average setosa sepal width is **3.428cm**.
+``` {r setosa sepal width, echo=FALSE}
+mean(setosa_only$Sepal.Width)
+```
+
+The average setosa petal length is **1.462cm**.
+``` {r setosa petal length, echo=FALSE}
+mean(setosa_only$Petal.Length)
+```
+
+The average setosa petal width is **0.246cm**.
+``` {r setosa petal width, echo=FALSE}
+mean(setosa_only$Petal.Width)
+```
+
+### What is the versicolor species like?
+
+Summary of the _versicolor_ species:
+``` {r versicolor summary, echo=FALSE}
+versicolor_only <- subset.data.frame(iris, subset = (iris$Species == "versicolor"))
+summary(versicolor_only)
+```
+
+The average versicolor sepal length is **5.936cm**.
+``` {r versicolor sepal length, echo=FALSE}
+mean(versicolor_only$Sepal.Length)
+```
+
+The average versicolor sepal width is **2.770cm**.
+``` {r versicolor sepal width, echo=FALSE}
+mean(versicolor_only$Sepal.Width)
+```
+
+The average versicolor petal length is **4.620cm**.
+``` {r versicolor petal length, echo=FALSE}
+mean(versicolor_only$Petal.Length)
+```
+
+The average versicolor petal width is **1.326cm**.
+``` {r versicolor petal width, echo=FALSE}
+mean(versicolor_only$Petal.Width)
+```
+
+### What is the virginica species like?
+
+Summary of the _virginica_ species:
+``` {r virginica summary, echo=FALSE}
+virginica_only <- subset.data.frame(iris, subset = (iris$Species == "virginica"))
+summary(virginica_only)
+```
+
+The average virginica sepal length is **6.588cm**.
+``` {r virginica sepal length, echo=FALSE}
+mean(virginica_only$Sepal.Length)
+```
+
+The average virginica sepal width is **2.974cm**.
+``` {r virginica sepal width, echo=FALSE}
+mean(virginica_only$Sepal.Width)
+```
+
+The average virginica petal length is **5.552cm**.
+``` {r virginica petal length, echo=FALSE}
+mean(virginica_only$Petal.Length)
+```
+
+The average virginica petal width is **2.026cm**.
+``` {r virginica petal width, echo=FALSE}
+mean(virginica_only$Petal.Width)
+```
+
+
+
+
+
+
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
